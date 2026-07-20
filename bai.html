@@ -2,41 +2,103 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thư Viện Ảnh Tương Tác</title>
-    <!-- Nhớ liên kết tệp CSS để trang web có khung hình đẹp -->
-    <link rel="stylesheet" href="style.css">
+    <title>Thư Viện Ảnh Không Lỗi</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        /* Khung hiển thị lớn */
+        #image {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            margin: 20px auto;
+            border: 4px solid #333;
+            background-color: #cccccc;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            
+            /* Căn giữa chữ */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            box-sizing: border-box;
+
+            /* Cấu hình ảnh nền không bị vỡ, lặp */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Các ảnh nhỏ bên dưới */
+        .preview {
+            width: 100px;
+            height: 70px;
+            margin: 10px;
+            border: 2px solid #888;
+            cursor: pointer;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Ô hiển thị lớn chứa ảnh và chữ khi di chuột vào -->
+    <!-- Ô hiển thị lớn -->
     <div id="image">
         Di chuột qua một hình ảnh bên dưới để hiển thị ở đây.
     </div>
 
-    <!-- Khu vực chứa các ảnh nhỏ (Thư viện) -->
-    <div class="gallery">
-        <img class="preview" 
-             src="https://images.unsplash.com/photo-1545241047-6083a3684587?w=600" 
-             alt="Góc phòng khách xanh mát với chiếc ghế trắng" 
-             onmouseover="upDate(this)" 
-             onmouseout="undo()">
+    <!-- Hàng ảnh nhỏ (Sử dụng ảnh mẫu Unsplash chất lượng cao, tải rất nhanh) -->
+    <img class="preview" 
+         src="https://images.unsplash.com/photo-1545241047-6083a3684587?w=500" 
+         alt="Góc phòng khách xanh mát" 
+         onmouseover="upDate(this)" 
+         onmouseout="undo()">
 
-        <img class="preview" 
-             src="https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?w=600" 
-             alt="Chậu cây nha đam tươi tốt trên nền trắng" 
-             onmouseover="upDate(this)" 
-             onmouseout="undo()">
-             
-        <img class="preview" 
-             src="https://images.unsplash.com/photo-1597055181300-e3633a207518?w=600" 
-             alt="Cây bàng cảnh lá to bản đặt cạnh cửa sổ" 
-             onmouseover="upDate(this)" 
-             onmouseout="undo()">
-    </div>
+    <img class="preview" 
+         src="https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?w=500" 
+         alt="Chậu cây nha đam tươi tốt" 
+         onmouseover="upDate(this)" 
+         onmouseout="undo()">
 
-    <!-- BƯỚC QUAN TRỌNG: Kết nối với tệp JavaScript để không bị lỗi "not defined" -->
-    <script src="script.js"></script>
+    <!-- PHẦN JAVASCRIPT AN TOÀN TUYỆT ĐỐI -->
+    <script>
+        function upDate(previewPic) {
+            // Kiểm tra an toàn: Nếu không có dữ liệu ảnh truyền vào thì dừng lại luôn, không chạy tiếp để tránh lỗi
+            if (!previewPic) return;
+
+            console.log("Rê chuột vào ảnh thành công. ALT: " + previewPic.alt);
+
+            // Lấy phần tử ô lớn
+            var oLon = document.getElementById("image");
+
+            // Kiểm tra an toàn: Nếu trình duyệt chưa tải xong ô lớn (#image), không làm gì cả
+            if (oLon) {
+                // Thay đổi chữ và hình nền một cách an toàn
+                oLon.innerHTML = previewPic.alt;
+                oLon.style.backgroundImage = "url('" + previewPic.src + "')";
+            }
+        }
+
+        function undo() {
+            console.log("Rời chuột ra ngoài.");
+
+            var oLon = document.getElementById("image");
+
+            // Kiểm tra an toàn trước khi xóa dữ liệu
+            if (oLon) {
+                oLon.style.backgroundImage = "url('')";
+                oLon.innerHTML = "Di chuột qua một hình ảnh bên dưới để hiển thị ở đây.";
+            }
+        }
+    </script>
 
 </body>
 </html>

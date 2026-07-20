@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư Viện Ảnh Tương Tác</title>
+    <!-- Nhớ liên kết tệp CSS để trang web có khung hình đẹp -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ô hiển thị lớn chứa ảnh và chữ khi di chuột vào -->
+    <div id="image">
+        Di chuột qua một hình ảnh bên dưới để hiển thị ở đây.
+    </div>
+
+    <!-- Khu vực chứa các ảnh nhỏ (Thư viện) -->
+    <div class="gallery">
+        <img class="preview" 
+             src="https://images.unsplash.com/photo-1545241047-6083a3684587?w=600" 
+             alt="Góc phòng khách xanh mát với chiếc ghế trắng" 
+             onmouseover="upDate(this)" 
+             onmouseout="undo()">
+
+        <img class="preview" 
+             src="https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?w=600" 
+             alt="Chậu cây nha đam tươi tốt trên nền trắng" 
+             onmouseover="upDate(this)" 
+             onmouseout="undo()">
+             
+        <img class="preview" 
+             src="https://images.unsplash.com/photo-1597055181300-e3633a207518?w=600" 
+             alt="Cây bàng cảnh lá to bản đặt cạnh cửa sổ" 
+             onmouseover="upDate(this)" 
+             onmouseout="undo()">
+    </div>
+
+    <!-- BƯỚC QUAN TRỌNG: Kết nối với tệp JavaScript để không bị lỗi "not defined" -->
+    <script src="script.js"></script>
+
+</body>
+</html>

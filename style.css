@@ -1,0 +1,51 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f2f5;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Định dạng ô lớn hiển thị ảnh xem trước */
+#image {
+    width: 80%;
+    height: 450px;
+    margin: 0 auto 20px auto;
+    border: 5px solid #333;
+    background-color: #8e8e8e;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8); /* Tạo bóng cho chữ dễ đọc trên nền ảnh */
+    
+    /* Thiết lập để hình nền bung đều, không bị lặp lại */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.2s ease-in-out;
+}
+
+/* Khu vực hàng ảnh nhỏ bên dưới */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Định dạng cho các ảnh nhỏ xem trước */
+.preview {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border: 3px solid #ccc;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+}
+
+/* Hiệu ứng làm sáng viền khi rê chuột vào ảnh nhỏ */
+.preview:hover {
+    border-color: #333;
+}
